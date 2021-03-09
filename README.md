@@ -34,7 +34,7 @@ python3 modded.py
 
 # FAQ:
 # Не работает на windows:
-Качаем python 3.7 - https://www.python.org/downloads/
+Качаем python 3.9 - https://www.python.org/downloads/
 В установщике ставим галочку add to path
 Далее устанавливаем
 и открываем cmd 
