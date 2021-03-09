@@ -67,7 +67,7 @@ client.run('токен сюда')
 
 Телеграмм автора для связи: @GLUTESHUNECHKA
 
-Дискорд:sPicY_mAmmA_Mia_T00lbar#6593
+Дискорд:ГЛ|-0ТЕН#6593
 
 Дискорд сервер:https://discord.gg/Un7umZQp8z
 
