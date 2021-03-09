@@ -40,9 +40,9 @@ python3 modded.py
 и открываем cmd 
 Пишем:
 ```
-python -m pip install discord
-python -m pip install colorama
-python -m pip install requests
+py -3 -m pip install -U discord.py
+py -3 -m pip install colorama
+py -3 -m pip install requests
 ```
 Готово! Можно открывать (уже просто зайдя в папку со скачанной программой, и двумя щелчками мышки).
 
