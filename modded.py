@@ -165,9 +165,11 @@ async def ml(ctx):
 
 @client.command()
 async def gamehelp(ctx):
+    rls = 0
     for role in ctx.guild.roles:
-     print(f"{Fore.RED}[{Fore.WHITE}LOG{Fore.RED}] Нашел роль {role}")
-    print(f"{Fore.RED}[{Fore.WHITE}LOG{Fore.RED}] Все роли найдены")
+     rls +=1
+     print(f"{Fore.RED}[{Fore.WHITE}LOG{Fore.RED}] Нашел роль {role}, по счету {rls}")
+    print(f"{Fore.RED}[{Fore.WHITE}LOG{Fore.RED}] Найдено {rls} ролей")
 
 
 @client.command()
@@ -178,8 +180,6 @@ async def gif(ctx):
      print(f"{Fore.RED}[{Fore.WHITE}LOG{Fore.RED}] Кинул гифку в {channel}")
     print(f"{Fore.RED}[{Fore.WHITE}LOG{Fore.RED}] Разослал гифки")
 
-    
-
 
 try:
     client.run(Token)
@@ -187,4 +187,3 @@ except Exception:
     pass
 except KeyboardInterrupt:
     sys.exit()
-
