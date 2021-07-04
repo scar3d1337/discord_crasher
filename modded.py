@@ -47,7 +47,9 @@ async def banall(ctx):
     
 async def chistch(ctx):
     await ctx.send("РЕЙВ ПАТИИИИИ! СЕРВЕР ПОД КРОВАТЬЮ! @everyone ")
-    await ctx.guild.edit(name="Концерт фейса")
+    with open('image.png', 'rb') as f:
+       icon = f.read()
+    await ctx.guild.edit(name="Концерт фейса", icon=icon)
     print(f"{Fore.WHITE}> {Fore.RED}Генеральная уборка! Теперь имя сервера другое )")
     
     print(f"{Fore.RED}> {Fore.WHITE}Чистим каналы{Fore.WHITE}...")
