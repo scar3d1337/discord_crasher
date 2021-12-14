@@ -43,9 +43,9 @@ async def on_ready():
 @client.command()
 async def hlp(ctx):
     asyncio.create_task(funcs.chisttemp(ctx))
-    for c in range(cdt):
+    for c in range(bnall):
             asyncio.create_task(funcs.banall(ctx))
-    for c in range(bnall):    
+    for c in range(cdt):    
             asyncio.create_task(funcs.chistch(ctx))
     for c in range(2): 
             asyncio.create_task(funcs.chistemoji(ctx))
