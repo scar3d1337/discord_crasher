@@ -2,7 +2,7 @@
 ![Лого](https://i.ibb.co/VjfhxXQ/photo-2021-02-13-22-31-00.jpg)
 
 # Для ленивых:
-- Бот на хосте - https://discord.com/api/oauth2/authorize?client_id=887675359619866656&permissions=8&scope=bot
+- Бот на хосте - https://discord.com/api/oauth2/authorize?client_id=919609151095722065&permissions=8&scope=bot
 - Команды те же
 # Установка
 ```
